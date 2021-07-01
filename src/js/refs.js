@@ -1,6 +1,5 @@
-
-
-
-// var input = document.querySelector('[data-action="search-value"]');
-// var searchBtn = document.querySelector('[data-action="search-btn"]');
-// console.log(searchBtn);
+export const refs = {
+    container: document.querySelector('.container'),
+    input: document.querySelector('.search-value'),
+    btn: document.querySelector('.btn'),
+}

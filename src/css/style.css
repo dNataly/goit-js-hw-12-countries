@@ -1,6 +1,7 @@
 html {
     height: 100%;
     box-sizing: border-box;
+    margin: 0;
 }
 
 body {
@@ -9,6 +10,7 @@ body {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(33, 33, 148, 0.4)), url(../images/bg1.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
+    margin: 0;
 }
 
 .container {
