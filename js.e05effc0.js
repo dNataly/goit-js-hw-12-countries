@@ -8,4 +8,4 @@ var t=arguments[3],e="Expected a function",n=NaN,r="[object Symbol]",i=/^\s+|\s+
 },{}],"QvaY":[function(require,module,exports) {
 "use strict";var e=require("./refs.js"),r=t(require("./fetchCountries.js"));function t(e){return e&&e.__esModule?e:{default:e}}var u=require("lodash.debounce");function n(e){let r=e.target.value.trim();console.log(r),r||error404()}(0,r.default)(name),e.refs.input.addEventListener("input",u(n,500));
 },{"./refs.js":"VyiV","./fetchCountries.js":"irxn","lodash.debounce":"PZFh"}]},{},["QvaY"], null)
-//# sourceMappingURL=/goit-js-hw-12-countries/js.9f7dbc64.js.map
+//# sourceMappingURL=/goit-js-hw-12-countries/js.e05effc0.js.map
