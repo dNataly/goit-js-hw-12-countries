@@ -14,7 +14,9 @@ refs.input.addEventListener('input', debounce(getInputValue, 500));
 function getInputValue(e) {
   let inputValue = e.target.value.trim();
 
-  getCountryName(inputValue);
+  if (inputValue) {
+      getCountryName(inputValue);
+  }
 }
 
 
@@ -28,17 +30,13 @@ function renderMarkup(countries) {
       refs.result.insertAdjacentHTML('beforeend', `<li class="country-list-item">${country.name}</li>`);
     })
   } else if (countries.length > 10) {
-    refs.input.innerHTML = '';
     getErrorMsg();
   }
-  fetchCountries(inputValue).then(data => {
-    console.log(data);
-    if (data.status === 404) {
+    if (countries.status === 404) {
       error({
         text: 'Something went wrong! Please enter a valid country name.',
       });
     }
-  })
 }
 
 
