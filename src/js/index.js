@@ -31,12 +31,14 @@ function renderMarkup(countries) {
     refs.input.innerHTML = '';
     getErrorMsg();
   }
-  if (countries.status === 404 || countries.length === undefined) {
-    error({
-      title: 'Country not found',
-      text: 'Please try again',
-    });
-  }
+  fetchCountries(inputValue).then(data => {
+    console.log(data);
+    if (data.status === 404) {
+      error({
+        text: 'Something went wrong! Please enter a valid country name.',
+      });
+    }
+  })
 }
 
 
@@ -46,7 +48,7 @@ function getCountryName(inputValue) {
 
 function getErrorMsg() {
   error({
-    text: 'Something went wrong! Please enter a valid country name.',
+    text: 'Too many matches.',
   })
 }
 
