@@ -22,7 +22,7 @@ function getInputValue(e) {
 
 function renderMarkup(countries) {
   reset();
-  if (countries.status === 404) {
+  if (countries === undefined) {
     error({
       text: 'Something went wrong! Please enter a valid country name.',
       delay: 3500,
