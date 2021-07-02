@@ -47,6 +47,5 @@ function getErrorMsg() {
   error({
     text: 'Something went wrong! Please enter a valid country name.',
   });
-  console.log("error");
 }
 
