@@ -2,7 +2,7 @@ import { refs } from './refs.js';
 import fetchCountries from './fetchCountries.js';
 // import pnotify from './pnotify.js'
 
-// import '../../node_modules/@pnotify/core/dist/BrightTheme.css';
+import '../../node_modules/@pnotify/core/dist/BrightTheme.css';
 import { alert, success, error } from '../../node_modules/@pnotify/core';
 function onFetchError() {
   error({
