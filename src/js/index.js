@@ -22,25 +22,29 @@ function getInputValue(e) {
 
 function renderMarkup(countries) {
   reset();
-  if (countries.length === 1) {
+  if (countries.status === 404) {
+    error({
+      text: 'Something went wrong! Please enter a valid country name.',
+      delay: 3500,
+    });
+    return;
+  }
+  else if (countries.length === 1) {
     let countryMarkup = countryInfo(countries);
     refs.fullCountryInfo.insertAdjacentHTML('beforeend', countryMarkup);
+    return;
   } else if (countries.length >= 2 && countries.length < 10) {
     countries.forEach(country => {
       refs.result.insertAdjacentHTML('beforeend', `<li class="country-list-item">${country.name}</li>`);
-    })
+    });
+    return;
   } else if (countries.length > 10) {
-     error({
-       text: 'Too many matches.',
-       delay: 3500,
-     });
+    error({
+      text: 'Too many matches.',
+      delay: 3500,
+    });
+    return;
   }
-    if (fetchCountries === 404) {
-      error({
-        text: 'Something went wrong! Please enter a valid country name.',
-        delay: 3500
-      });
-    }
 }
 
 
