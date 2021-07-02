@@ -30,9 +30,11 @@ function renderMarkup(countries) {
       refs.result.insertAdjacentHTML('beforeend', `<li class="country-list-item">${country.name}</li>`);
     })
   } else if (countries.length > 10) {
-    getErrorMsg();
+     error({
+      text: 'Too many matches.',
+     });
   }
-    if (countries.status === 404) {
+    if (countries === undefined) {
       error({
         text: 'Something went wrong! Please enter a valid country name.',
       });
@@ -42,12 +44,6 @@ function renderMarkup(countries) {
 
 function getCountryName(inputValue) {
   fetchCountries(inputValue).then(countries => renderMarkup(countries));
-}
-
-function getErrorMsg() {
-  error({
-    text: 'Too many matches.',
-  })
 }
 
 function reset() {
