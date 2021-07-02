@@ -44,7 +44,8 @@ function renderMarkup(countries) {
     } else if (countries.length >= 2 && countries.length < 10) {
       refs.result.insertAdjacentHTML('beforeend', `<li class="country-list-item">${country.name}</li>`);
     } else if (countries.length > 10) {
-      console.log('Too many matches found');
+      inputValue.innerHTML = '';
+      errorMsg();
     }
   });
   }
