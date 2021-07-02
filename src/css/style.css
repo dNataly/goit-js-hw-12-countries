@@ -17,12 +17,13 @@ body {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-    padding: 20px 10px;
+    padding: 20px
 }
 
-.search-form {
+.search-wrap {
     display: flex;
     justify-content: center;
+    /* flex-wrap: wrap; */
 }
 
 .btn, .search-value {
@@ -73,3 +74,47 @@ input.search-value:focus {
     moz-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
+
+
+.result-wrap {
+    transform: translateY(30%);
+}
+
+.country-search-result {
+    color: white;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    transform: translateY(30%);
+}
+
+.country-list-item {
+    font-size: 35px;
+}
+
+.full-country-info {
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.country-name {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.country-info-wrap {
+    display: flex;
+    align-items: space-between;
+    justify-content: space-evenly;
+}
+
+.country-info-items {
+    padding: 10px 0;
+}
+
+.country-flag img{
+    max-width: 300px;
+    width: 100%;
+}
+
