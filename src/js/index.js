@@ -1,21 +1,15 @@
-import { refs } from './refs.js';
-import fetchCountries from './fetchCountries.js';
-// import pnotify from './pnotify.js'
+import countryInfo from '../templates/full-country-info.hbs'
 
+import { refs } from './refs.js';
 import '../../node_modules/@pnotify/core/dist/BrightTheme.css';
 import { alert, success, error } from '../../node_modules/@pnotify/core';
-function onFetchError() {
-  error({
-    text: 'Something went wrong! Please enter a valid country name.',
-  });
-}
+import fetchCountries from './fetchCountries.js';
 
-// var debounce = require('lodash.debounce');
+var debounce = require('lodash.debounce');
 
-// a();
-// refs.input.addEventListener('input', debounce(getInputValue, 500));
+refs.input.addEventListener('input', debounce(getInputValue, 500));
 
-refs.input.addEventListener('input', getInputValue);
+// refs.input.addEventListener('input', getInputValue);
 
 function getInputValue(e) {
   let inputValue = e.target.value.trim();
@@ -27,29 +21,16 @@ function getInputValue(e) {
 function renderMarkup(countries) {
   reset();
   console.log(countries);
-  countries.forEach(country => {
+  // countries.forEach(country => {
     if (countries.length === 1) {
-      refs.fullCountryInfo.insertAdjacentHTML(
-        'beforeend',
-        `<h1 class="country-name">${country.name}</h1>
-        <div class="country-info-wrap">
-          <ul class="country-info-list">
-            <li class="country-info-items">Capital: ${country.capital}</li>
-            <li class="country-info-items">Population: ${country.population}</li>
-            <li class="country-info-items"> Languages: 
-              <ul class="lang-wrap">${country.languages.name}</ul>
-            </li>
-          </ul>
-          <div class="country-flag"><img src="${country.flag}" alt="Flag of the country"</div>
-        </div>`,
-      );
+      refs.fullCountryInfo.insertAdjacentHTML('beforeend', countryInfo);
     } else if (countries.length >= 2 && countries.length < 10) {
       refs.result.insertAdjacentHTML('beforeend', `<li class="country-list-item">${country.name}</li>`);
     } else if (countries.length > 10) {
       refs.input.innerHTML = '';
-      onFetchError();
+      getErrorMsg();
     }
-  });
+  // });
   }
 
 
@@ -61,3 +42,11 @@ function reset() {
   refs.fullCountryInfo.innerHTML = '';
   refs.result.innerHTML = '';
 }
+
+function getErrorMsg() {
+  error({
+    text: 'Something went wrong! Please enter a valid country name.',
+  });
+  console.log("error");
+}
+
