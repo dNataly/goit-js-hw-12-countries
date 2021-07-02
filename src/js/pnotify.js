@@ -1,6 +1,6 @@
-import { error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
+// import { alert } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 
 
-const errorMsg = error({
-  text: "Too many matches.",
-});
+// const errorMsg = alert({
+//   text: 'Too many matches.',
+// });

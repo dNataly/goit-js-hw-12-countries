@@ -1,16 +1,10 @@
 import { refs } from './refs.js';
 import fetchCountries from './fetchCountries.js';
-import pnotify from './pnotify.js'
+// import pnotify from './pnotify.js'
+import PNotify from '../node_modules/@pnotify/core/dist/PNotify.js';
 var debounce = require('lodash.debounce');
 
-function a () {
-  new pnotify({
-    title: 'Simple Notification',
-    text: "Hey, I'm a simple notification.",
-  });
-};
-
-a();
+// a();
 refs.input.addEventListener('input', debounce(getInputValue, 500));
 
 // refs.input.addEventListener('input', getInputValue);
@@ -45,7 +39,9 @@ function renderMarkup(countries) {
       refs.result.insertAdjacentHTML('beforeend', `<li class="country-list-item">${country.name}</li>`);
     } else if (countries.length > 10) {
       inputValue.innerHTML = '';
-      errorMsg();
+      PNotify.error({
+        text: 'Too many matches found. Please enter a more specific query!',
+      });
     }
   });
   }
