@@ -1,4 +1,4 @@
-import countryInfo from '../templates/full-country-info.hbs'
+import countryInfo from '../templates/full-country-info.hbs';
 
 import { refs } from './refs.js';
 import '../../node_modules/@pnotify/core/dist/BrightTheme.css';
@@ -19,18 +19,26 @@ function getInputValue(e) {
 
 
 function renderMarkup(countries) {
-  reset();
-  console.log(countries);
-  // countries.forEach(country => {
-    if (countries.length === 1) {
-      refs.fullCountryInfo.insertAdjacentHTML('beforeend', countryInfo);
-    } else if (countries.length >= 2 && countries.length < 10) {
+  if (countries.length === 1) {
+      let countryMarkup = countryInfo(countries);
+      refs.fullCountryInfo.insertAdjacentHTML('beforeend', countryMarkup);
+      return;
+  } else if (countries.length >= 2 && countries.length < 10) {
+    countries.forEach(country => {
       refs.result.insertAdjacentHTML('beforeend', `<li class="country-list-item">${country.name}</li>`);
+    })
+      return;
     } else if (countries.length > 10) {
       refs.input.innerHTML = '';
       getErrorMsg();
+      return;
     }
-  // });
+    if (countries.status === 404) {
+      error({
+        title: 'Country not found',
+        text: 'Please try again',
+      });
+      return;
   }
 
 
@@ -38,14 +46,8 @@ function getCountryName(inputValue) {
   fetchCountries(inputValue).then(countries => renderMarkup(countries));
 }
 
-function reset() {
-  refs.fullCountryInfo.innerHTML = '';
-  refs.result.innerHTML = '';
-}
-
 function getErrorMsg() {
   error({
     text: 'Something went wrong! Please enter a valid country name.',
-  });
+  })
 }
-
