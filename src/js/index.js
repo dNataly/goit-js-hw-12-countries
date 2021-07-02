@@ -1,7 +1,7 @@
 import { refs } from './refs.js';
 import fetchCountries from './fetchCountries.js';
 import pnotify from './pnotify.js'
-// // var debounce = require('lodash.debounce');
+var debounce = require('lodash.debounce');
 
 function a () {
   new pnotify({
@@ -11,9 +11,9 @@ function a () {
 };
 
 a();
-// refs.input.addEventListener('input', debounce(getInputValue, 500));
+refs.input.addEventListener('input', debounce(getInputValue, 500));
 
-refs.input.addEventListener('input', getInputValue);
+// refs.input.addEventListener('input', getInputValue);
 
 function getInputValue(e) {
   let inputValue = e.target.value.trim();
