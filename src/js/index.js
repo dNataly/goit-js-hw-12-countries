@@ -19,26 +19,23 @@ function getInputValue(e) {
 
 
 function renderMarkup(countries) {
+  reset();
   if (countries.length === 1) {
     let countryMarkup = countryInfo(countries);
     refs.fullCountryInfo.insertAdjacentHTML('beforeend', countryMarkup);
-    return;
   } else if (countries.length >= 2 && countries.length < 10) {
     countries.forEach(country => {
       refs.result.insertAdjacentHTML('beforeend', `<li class="country-list-item">${country.name}</li>`);
     })
-    return;
   } else if (countries.length > 10) {
     refs.input.innerHTML = '';
     getErrorMsg();
-    return;
   }
   if (countries.status === 404) {
     error({
       title: 'Country not found',
       text: 'Please try again',
     });
-    return;
   }
 }
 
@@ -51,4 +48,9 @@ function getErrorMsg() {
   error({
     text: 'Something went wrong! Please enter a valid country name.',
   })
+}
+
+function reset() {
+  refs.fullCountryInfo.innerHTML = '';
+  refs.result.innerHTML = '';
 }
