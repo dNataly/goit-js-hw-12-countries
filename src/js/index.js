@@ -2,7 +2,7 @@ import countryInfo from '../templates/full-country-info.hbs';
 
 import { refs } from './refs.js';
 import '../../node_modules/@pnotify/core/dist/BrightTheme.css';
-import { alert, success, error } from '../../node_modules/@pnotify/core';
+import { error } from '../../node_modules/@pnotify/core';
 import fetchCountries from './fetchCountries.js';
 
 var debounce = require('lodash.debounce');
@@ -31,7 +31,7 @@ function renderMarkup(countries) {
     refs.input.innerHTML = '';
     getErrorMsg();
   }
-  if (countries.status === 404) {
+  if (countries.status === 404 || countries.length === undefined) {
     error({
       title: 'Country not found',
       text: 'Please try again',
