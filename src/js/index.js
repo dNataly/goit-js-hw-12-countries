@@ -31,12 +31,14 @@ function renderMarkup(countries) {
     })
   } else if (countries.length > 10) {
      error({
-      text: 'Too many matches.',
+       text: 'Too many matches.',
+       delay: 3500,
      });
   }
-    if (countries === undefined) {
+    if (fetchCountries === 404) {
       error({
         text: 'Something went wrong! Please enter a valid country name.',
+        delay: 3500
       });
     }
 }
