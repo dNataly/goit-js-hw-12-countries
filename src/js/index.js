@@ -1,13 +1,21 @@
 import { refs } from './refs.js';
 import fetchCountries from './fetchCountries.js';
 // import pnotify from './pnotify.js'
-import PNotify from '../node_modules/@pnotify/core/dist/PNotify.js';
-var debounce = require('lodash.debounce');
+
+// import '../../node_modules/@pnotify/core/dist/BrightTheme.css';
+import { alert, success, error } from '../../node_modules/@pnotify/core';
+function onFetchError() {
+  error({
+    text: 'Something went wrong! Please enter a valid country name.',
+  });
+}
+
+// var debounce = require('lodash.debounce');
 
 // a();
-refs.input.addEventListener('input', debounce(getInputValue, 500));
+// refs.input.addEventListener('input', debounce(getInputValue, 500));
 
-// refs.input.addEventListener('input', getInputValue);
+refs.input.addEventListener('input', getInputValue);
 
 function getInputValue(e) {
   let inputValue = e.target.value.trim();
@@ -38,10 +46,8 @@ function renderMarkup(countries) {
     } else if (countries.length >= 2 && countries.length < 10) {
       refs.result.insertAdjacentHTML('beforeend', `<li class="country-list-item">${country.name}</li>`);
     } else if (countries.length > 10) {
-      inputValue.innerHTML = '';
-      PNotify.error({
-        text: 'Too many matches found. Please enter a more specific query!',
-      });
+      refs.input.innerHTML = '';
+      onFetchError();
     }
   });
   }
