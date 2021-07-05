@@ -9,7 +9,7 @@ var debounce = require('lodash.debounce');
 
 refs.input.addEventListener('input', debounce(getInputValue, 500));
 
-// refs.input.addEventListener('input', getInputValue);
+refs.input.addEventListener('input', getInputValue);
 
 function getInputValue(e) {
   let inputValue = e.target.value.trim();
@@ -25,7 +25,7 @@ function renderMarkup(countries) {
   if (countries === undefined) {
     error({
       text: 'Something went wrong! Please enter a valid country name.',
-      delay: 3500,
+      delay: 3200,
     });
     return;
   }
@@ -41,7 +41,7 @@ function renderMarkup(countries) {
   } else if (countries.length > 10) {
     error({
       text: 'Too many matches.',
-      delay: 3500,
+      delay: 3200,
     });
     return;
   }
